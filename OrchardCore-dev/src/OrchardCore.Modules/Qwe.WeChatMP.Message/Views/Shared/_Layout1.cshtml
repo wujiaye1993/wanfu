@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 客服消息</title>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <style>
+        .body-content {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">asdasd</span>
+                    <span class="icon-bar">asdasd</span>
+                    <span class="icon-bar">asdasd</span>
+                </button>
+                <a asp-route-area="OrchardCore.Admin" asp-controller="Admin" asp-action="Index" class="navbar-brand">客服管理系统</a>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                @*
+                <ul class="nav navbar-nav">
+                    <li><a asp-route-area="OrchardCore.Admin" asp-controller="Admin" asp-action="Index">客服管理系统</a></li>
+                </ul>
+                *@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2015 - MvcSandbox</p>
+        </footer>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
