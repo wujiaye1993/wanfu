@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="@Orchard.CultureName()" dir="@Orchard.CultureDir()">
 <head>
     <title>@RenderTitleSegments(Site.SiteName, "before")</title>
@@ -25,6 +25,7 @@
     <div class="ta-wrapper">
         <div class="ta-navbar-top">
             <a class="ta-navbar-brand" href="@Url.Content("~/")"><span>@Site.SiteName</span></a>
+            <a asp-route-area="Qwe.WeChatMP.Message" asp-controller="MessageMPAsync" asp-action="Index" class="nav-link">客服消息系统</a>
             <div class="collapse navbar-collapse" id="navbar-links">
                 <div class="mr-auto">
                     @await RenderSectionAsync("NavbarTop", required: false)
