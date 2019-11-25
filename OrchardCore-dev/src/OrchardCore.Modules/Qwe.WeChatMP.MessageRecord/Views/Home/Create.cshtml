@@ -1,0 +1,44 @@
+@model MsgCreateVM
+
+<h1>@RenderTitleSegments(T["Create WeChatMP {0}", Model.KfName])</h1>
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<form asp-action="Create" method="post">
+    <div class="form-group" asp-validation-class-for="KfName">
+        <label asp-for="KfName">@T["KfName"]</label>
+        <input asp-for="KfName" class="form-control" autofocus />
+        <span asp-validation-for="KfName" class="text-danger">@T["The KfName is required"]</span>
+    </div>
+    <div class="form-group" asp-validation-class-for="CreateTime">
+        <label asp-for="CreateTime">@T["CreateTime"]</label>
+        <input asp-for="CreateTime" class="form-control" autofocus />
+        <span asp-validation-for="CreateTime" class="text-danger">@T["The CreateTime is required"]</span>
+    </div>
+    <div class="form-group" asp-validation-class-for="ToUserName">
+        <label asp-for="ToUserName">@T["ToUserName"]</label>
+        <input asp-for="ToUserName" class="form-control" autofocus />
+        <span asp-validation-for="ToUserName" class="text-danger">@T["The ToUserName is required"]</span>
+    </div>
+    <div class="form-group" asp-validation-class-for="FromUserName">
+        <label asp-for="FromUserName">@T["FromUserName"]</label>
+        <input asp-for="FromUserName" class="form-control" autofocus />
+        <span asp-validation-for="FromUserName" class="text-danger">@T["The FromUserName is required"]</span>
+    </div>
+    <div class="form-group" asp-validation-class-for="Speaker">
+        <label asp-for="Speaker">@T["Speaker"]</label>
+        <input asp-for="Speaker" class="form-control" autofocus />
+        <span asp-validation-for="Speaker" class="text-danger">@T["The Speaker is required"]</span>
+    </div>
+    <div class="form-group" asp-validation-class-for="Content">
+        <label asp-for="Content">@T["Content"]</label>
+        <input asp-for="Content" class="form-control" autofocus />
+        <span asp-validation-for="Content" class="text-danger">@T["The Content is required"]</span>
+    </div>
+    <fieldset>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">@T["Create"]</button>
+            <a class="btn btn-secondary" asp-route-action="List">@T["Cancel"]</a>
+        </div>
+    </fieldset>
+</form>

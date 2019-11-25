@@ -77,4 +77,6 @@
 
   <Import Project="..\..\src\OrchardCore.Build\OrchardCore.Commons.targets" />
 
+  <ProjectExtensions><VisualStudio><UserProperties _1_1_4_1_1_4src_4orchardcore_1cms_1web_4appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

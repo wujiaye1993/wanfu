@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\OrchardCore.Modules\OrchardCore.AdminMenuTest1\OrchardCore.AdminMenuTest1.csproj" />
+    <ProjectReference Include="..\..\OrchardCore.Modules\Qwe.WeChatMP.MessageRecord\Qwe.WeChatMP.MessageRecord.csproj" />
     <ProjectReference Include="..\..\OrchardCore.Modules\Qwe.WeChatMP.Message\Qwe.WeChatMP.Message.csproj" />
     <ProjectReference Include="..\OrchardCore.Application.Targets\OrchardCore.Application.Targets.csproj" PrivateAssets="none" />
 

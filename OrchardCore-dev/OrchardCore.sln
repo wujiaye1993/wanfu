@@ -370,6 +370,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qwe.WeChatMP.Message", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senparc.Weixin.NetCore3Sample.CommonService", "src\OrchardCore.Modules\Senparc.Weixin.MP.Sample.CommonService\Senparc.Weixin.NetCore3Sample.CommonService.csproj", "{5F78FD88-300E-4253-808D-FBB6AA8754E7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qwe.WeChatMP.MessageRecord", "src\OrchardCore.Modules\Qwe.WeChatMP.MessageRecord\Qwe.WeChatMP.MessageRecord.csproj", "{59808766-8B84-485F-8164-E8F952C6A54F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -992,6 +994,10 @@ Global
 		{5F78FD88-300E-4253-808D-FBB6AA8754E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F78FD88-300E-4253-808D-FBB6AA8754E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F78FD88-300E-4253-808D-FBB6AA8754E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59808766-8B84-485F-8164-E8F952C6A54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59808766-8B84-485F-8164-E8F952C6A54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59808766-8B84-485F-8164-E8F952C6A54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59808766-8B84-485F-8164-E8F952C6A54F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1166,6 +1172,7 @@ Global
 		{931BC6F2-4DD9-4BB1-857D-569F8819085C} = {90030E85-0C4F-456F-B879-443E8A3F220D}
 		{FADDB975-E626-44CC-9E14-17A5FA27CF31} = {90030E85-0C4F-456F-B879-443E8A3F220D}
 		{5F78FD88-300E-4253-808D-FBB6AA8754E7} = {90030E85-0C4F-456F-B879-443E8A3F220D}
+		{59808766-8B84-485F-8164-E8F952C6A54F} = {90030E85-0C4F-456F-B879-443E8A3F220D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46A1D25A-78D1-4476-9CBF-25B75E296341}

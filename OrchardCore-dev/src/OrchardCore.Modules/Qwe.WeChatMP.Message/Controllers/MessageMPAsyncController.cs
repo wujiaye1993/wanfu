@@ -23,6 +23,8 @@ using Senparc.Weixin.MP.Entities;
 using Qwe.WeChatMP.Message.Services;
 using Qwe.WeChatMP.Message.Models;
 using OrchardCore.DisplayManagement.Notify;
+using Senparc.Weixin.MP.CommonAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -52,7 +54,8 @@ namespace Qwe.WeChatMP.Message.Controllers
         MessageBody body = new MessageBody();
         //公众号集统一服务器验证Token
         public readonly string Token = "wanfu";
-
+        public readonly string AppId = "wxc3a7e87e3d3cb81a";
+        public readonly string Secret = "7f331ad801e1cf978024c31c5f0a5b9f";
         [HttpGet]
         [ActionName("Get")]
         public Task<ActionResult> Get(string signature, string timestamp, string nonce, string echostr)
@@ -81,10 +84,10 @@ namespace Qwe.WeChatMP.Message.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<ActionResult> Post(PostModel postModel)
         {
-            /*            if (!CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, Token))
-                        {
-                            return new WeixinResult("参数错误！");
-                        }*/
+/*            if (!CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, Token))
+            {
+                return new WeixinResult("参数错误！");
+            }*/
 
 
 
@@ -117,12 +120,48 @@ namespace Qwe.WeChatMP.Message.Controllers
             //拿到请求消息内容 仿消息处理
             var textMessageFromWeixin = messageHandler.RequestMessage as RequestMessageText;
             var contentFromWeixin = textMessageFromWeixin.Content;
+            
             //把 contentFromWeixin 放到 SignalR 管道中（SingleHub），再由管道发送到前端显示     
 
             //赋给SingleHub管道里的字段，构建顾客消息对象 //这里传入User的Id，即客服的Id，管道Client的Id以需要，下面的123可以替换成UserId
             //await _hubContext.Clients.Client("123").SendAsync("Recv", body);
-            body.FromUserName = "小微同学";
+            //var name = System.Security.Claims.ClaimsPrincipal.Current.Identity.Name;
+
+            #region 从消息中获取哪个公众号
+            var AppIdFromWeixin = textMessageFromWeixin.ToUserName;
+            #endregion
+
+            #region 判断缓存中是否有该关于AppId信息，有就从中获取，没有查数据库AppId获取对应的Secret
+
+            #endregion
+
+            #region 从缓存中获取AccessToken
+            var Result = CommonApi.GetToken(AppIdFromWeixin, Secret);
+            #endregion
+
+            #region 从消息中获取哪个用户
+            var OpenIdFromWeixin = textMessageFromWeixin.FromUserName;
+            #endregion
+
+            #region 获取用户信息
+            var InfoResult = UserApi.Info(Result.access_token, OpenIdFromWeixin);
+            var nickname = InfoResult.nickname;
+            var sex = InfoResult.sex;
+            var city = InfoResult.city;
+            var remark = InfoResult.remark;
+            var headimgurl = InfoResult.headimgurl;
+            var subscribe = InfoResult.subscribe; //用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息。
+            #endregion
+
+            var time = textMessageFromWeixin.CreateTime;
+
+            #region 构建接收消息体到前端
+            body.ToUserName = textMessageFromWeixin.ToUserName;
+            body.FromUserName = textMessageFromWeixin.FromUserName;
+            body.CreateTime = time.ToString("yyyy-MM-dd HH:mm:ss");
+            body.UserName = nickname;
             body.Content = contentFromWeixin;
+            #endregion
 
             //在Controller里使用管道输送
             await _hubContext.Clients.All.SendAsync("Recv", body);
