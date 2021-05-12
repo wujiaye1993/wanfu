@@ -34,7 +34,7 @@
     "gulp-util": "3.0.8",
     "merge-stream": "2.0.0",
     "path-posix": "1.0.0",
-    "postcss": "7.0.18",
+    "postcss": "8.2.10",
     "postcss-rtl": "^1.5.0",
     "typescript": "3.6.3"
   },
